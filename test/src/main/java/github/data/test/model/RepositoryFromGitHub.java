@@ -3,11 +3,11 @@ package github.data.test.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.Entity;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
+import java.util.Map;
 
 
 @Getter
@@ -15,27 +15,14 @@ import java.util.List;
 @JsonIgnoreProperties
 public class RepositoryFromGitHub {
     private String name;
-
-    @JsonIgnore // Zignoruj zagnieżdżony obiekt 'owner' przy serializacji JSON
-    private Owner owner;
-
     private List<Branch> branches;
-
+    @JsonIgnore
+    private boolean fork;
     @JsonProperty("ownerLogin")
-    public String getOwnerLogin() {
-        return owner != null ? owner.getLogin() : null;
-    }
+    private String ownerLogin;
 
-    public boolean isFork() {
-        return false;
-    }
-
-    @JsonIgnoreProperties(ignoreUnknown = true)
-    private static class Owner {
-        private String login;
-
-        public String getLogin() {
-            return login;
-        }
+    @JsonProperty("owner")
+    private void unpackOwner(Map<String, Object> owner) {
+        this.ownerLogin = owner != null ? (String) owner.get("login") : null;
     }
 }
