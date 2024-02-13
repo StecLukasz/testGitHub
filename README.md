@@ -1,11 +1,8 @@
 **GitHub Service API**
 
-**Opis**
+**Description**
 
-GitHub Service API to aplikacja Spring Boot, 
-która umożliwia użytkownikom pobieranie informacji o nie-forkowanych repozytoriach z GitHuba dla danego użytkownika. 
-Aplikacja korzysta z GitHub REST API do pobierania danych.
-
+The GitHub Service API is a Spring Boot application that allows users to retrieve information about non-forked repositories from GitHub for a given user. The application uses the GitHub REST API to fetch data.
 
 **Tech Stack**
 
@@ -15,42 +12,40 @@ Aplikacja korzysta z GitHub REST API do pobierania danych.
 
 - Libraries: Lombok
 
-- Build tool: Maven
+- Build Tool: Maven
 
 - UI: REST API
 
-**Funkcjonalności**
+**Features**
 
-- Pobieranie listy nie-forkowanych repozytoriów dla określonego użytkownika GitHub.
+- Retrieving a list of non-forked repositories for a specified GitHub user.
 
-- Zwracanie szczegółowych informacji o repozytoriach, w tym nazwy, właściciela (login), 
-oraz listy branchy wraz z ostatnim commit SHA.
+- Returning detailed information about repositories, including the name, owner (login), and a list of branches along with the latest commit SHA.
 
-**Wymagania**
+**Requirements**
 
-- Java 11 lub nowsza
+- Java 11 or newer
 
-- Maven 3.6 lub nowszy
+- Maven 3.6 or newer
 
-- Dostęp do Internetu dla połączeń z GitHub API
+- Internet access for connections to the GitHub API
 
+**Error Handling**
 
-**Obsługa Błędów**
+In case a user is not found, the application will return a 404 error with an appropriate message.
 
-W przypadku nieznalezienia użytkownika, aplikacja zwróci błąd 404 z odpowiednim komunikatem.
+**Launching**
 
-**Uruchomienie**
-
-Po pomyślnej instalacji, uruchom aplikację przy użyciu:
+After successful installation, run the application using:
 
 `java -jar target/github-service-api-0.0.1-SNAPSHOT.jar`
 
-**Użycie**
+**Usage**
 
-_Pobieranie danych z repozytoriów oraz ich składowych_
+_Retrieving Data from Repositories and their Components_
 
-Aby pobrać dane dla użytkownika GitHub, wykonaj zapytanie GET na endpoint:
+To retrieve data for a GitHub user, make a GET request to the endpoint:
 
 `GET /api/users/{username}/repos`
 
-Zastąp {username} nazwą użytkownika GitHub.
+Replace {username} with the GitHub username.
