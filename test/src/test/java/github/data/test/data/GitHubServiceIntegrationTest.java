@@ -18,7 +18,9 @@ public class GitHubServiceIntegrationTest {
 
     @Autowired
     private WebTestClient webTestClient;
+// brak mockowania serwera, poneważ żadne dependency nie działało i wysypywało mi cąły projekt
 
+    
     @Test
     public void testGetNonForkRepositoriesForUser() {
         String username = "Sampeteq";
